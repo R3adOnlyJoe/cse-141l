@@ -8,11 +8,15 @@ module InstROM #(parameter IW = 10, DW = 9)(
   
   logic [DW-1:0] inst_rom [2**IW];
   //logic [DW-1:0] inst_rom [3];
-   initial begin
+  /* initial begin
     inst_rom[ 0] = 'b011100000;
     inst_rom[ 1] = 'b010110000;
     inst_rom[ 2] = 'b010010001; 
+  end*/
+   initial begin
+	$readmemb("C:/Users/ziz195/Desktop/cse141l/machine_code.txt",inst_rom);
   end
+
 // continuous combinational read output
 // change the pointer (from program counter) ==> change the output
   assign InstOut = inst_rom[InstAddress];

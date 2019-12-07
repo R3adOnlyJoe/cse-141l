@@ -182,6 +182,16 @@ always_comb begin
 				branch = 0;
 				done = 0;
 			end
+			15: begin 
+				MEM_READ = 0;
+				MEM_WRITE = 0;
+				REG_WRITE = 0;
+				ACC_WRITE = 1;
+				IS_MEM = 0;
+				LOOKUP = 0;
+				branch = 0;
+				done = 0;
+			end
 			default: begin
 				MEM_READ = 0;
 				MEM_WRITE = 0;

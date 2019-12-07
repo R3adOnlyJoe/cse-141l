@@ -26,13 +26,14 @@ package definitions;
 	const logic [3:0]KSTR = 4'b1100;
 	const logic [3:0]done = 4'b1101;
 	const logic [3:0]lookup = 4'b1110;
+	const logic [3:0]kor = 4'b1111;
 
 
 // enum names will appear in timing diagram
 
     typedef enum logic[3:0] {
         SUB,ADD, DIV,MUL,XOR,LSH, RSH, GETI,
-        AND, SET,GET,LOA,STR,don,look} op_mne;
+        AND, SET,GET,LOA,STR,don,look,OR} op_mne;
 // note: kADD is of type logic[3:0] (4-bit binary)
 //   ADD is of type enum -- equiv., but watch casting
 //   see ALU.sv for how to handle this   

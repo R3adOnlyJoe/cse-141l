@@ -40,7 +40,7 @@ logic [$clog2(512):0] start_address;
    .start,
    .start_address,		// relative
 	.branch,		// 
-	.target,
+	.target(Instruction[7:0]),
 	.taken,
 	.PC,
 	.CLK
@@ -100,6 +100,7 @@ logic [$clog2(512):0] start_address;
 	  .OUT     (ALU_out),//regWriteValue),
 	  .SC_IN   ,//(SC_IN),
 	  .SC_OUT  ,
+	  .IS_BRANCH(Instruction[8]),
 	  .branch(taken)  ,
 	  .ZERO 
 	  );

@@ -14,7 +14,7 @@ module InstROM #(parameter IW = 10, DW = 9)(
     inst_rom[ 2] = 'b010010001; 
   end*/
    initial begin
-	$readmemb("C:/Users/ziz195/Desktop/cse141l/machine_code.txt",inst_rom);
+	$readmemb("C:/Users/ziz195/Desktop/cse141l/machine_code_2.txt",inst_rom);
   end
 
 // continuous combinational read output

@@ -56,10 +56,6 @@ module ALU(
 				OUT 	 = INPUTA / INPUTB;
 				SC_OUT = 0;
 				end
-	 KMUL : begin
-				OUT  	 = INPUTA * INPUTB;
-				SC_OUT = 0;
-				end
 	 KLOA	: begin
 				OUT = INPUTA;
 				SC_OUT = 0;

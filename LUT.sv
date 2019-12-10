@@ -12,7 +12,10 @@ always_comb
 	4'b0001:   Target = 8'b00000001;
 	4'b0010:   Target = 8'b00011110; //30 
 	4'b0011:   Target = 8'b00011111; //31
-	
+	4'b0100:	  Target = 8'b01000000; //64
+	4'b0101:	  Target = 8'b01000001; //65
+	4'b0110:	  Target = 8'b01011110; //94
+	4'b0111:	  Target = 8'b01011111; //95
 	default: Target = 8'b00000000;
   endcase
 

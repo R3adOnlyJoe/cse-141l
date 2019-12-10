@@ -14,7 +14,7 @@ package definitions;
 	const logic [3:0]KSUB = 4'b0000;
 	const logic [3:0]KADD = 4'b0001;
 	const logic [3:0]KDIV = 4'b0010;
-	const logic [3:0]KMUL = 4'b0011;
+	const logic [3:0]KLOO2 = 4'b0011;
 	const logic [3:0]KXOR = 4'b0100;
 	const logic [3:0]KLSH = 4'b0101;
 	const logic [3:0]KRSH = 4'b0110;
@@ -32,7 +32,7 @@ package definitions;
 // enum names will appear in timing diagram
 
     typedef enum logic[3:0] {
-        SUB,ADD, DIV,MUL,XOR,LSH, RSH, GETI,
+        SUB,ADD, DIV,loo2,XOR,LSH, RSH, GETI,
         AND, SET,GET,LOA,STR,don,look,OR} op_mne;
 // note: kADD is of type logic[3:0] (4-bit binary)
 //   ADD is of type enum -- equiv., but watch casting

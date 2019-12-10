@@ -10,16 +10,20 @@ module PC(
   input[7:0]	target,
   input  taken,
 		CLK,
+		LOOKUP2,
   output logic[ 9:0] PC);
 
 always @(posedge CLK)
   if(start) begin
-    PC <= start_address;
+    PC <= 0;
   end
   else begin
     if(branch) begin
 		  if(taken)
-			PC <= target; 
+		      if(LOOKUP2)
+					PC <=target[3:0];
+				else
+					PC <= PC+target; 
 		  else
 				PC <= PC + 1;
 		end	
@@ -28,4 +32,3 @@ always @(posedge CLK)
   end
   
 endmodule
-        

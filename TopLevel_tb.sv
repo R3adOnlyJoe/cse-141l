@@ -75,4 +75,3 @@ always begin   // clock period = 10 Verilog time units
 end
       
 endmodule
-

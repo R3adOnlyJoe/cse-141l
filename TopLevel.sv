@@ -26,6 +26,7 @@ wire        MEM_READ,	   // data_memory read enable
 			IS_MEM,	       // carry reg enable
 			REG_WRITE,
 		    LOOKUP,	       // to carry register
+			 LOOKUP2,
 			ZERO,		   // ALU output = 0 flag
             taken,	   // to program counter: jump enable
 				SC_IN,
@@ -42,6 +43,7 @@ logic [$clog2(512):0] start_address;
 	.branch,		// 
 	.target(Instruction[7:0]),
 	.taken,
+	.LOOKUP2,
 	.PC,
 	.CLK
 	);
@@ -63,6 +65,7 @@ logic [$clog2(512):0] start_address;
 	.ACC_WRITE,        // carry reg clear
 	.IS_MEM,	       // carry reg enable
 	.LOOKUP,	       // to carry register
+	.LOOKUP2,
 	.branch,
 	.done
   );
@@ -100,7 +103,7 @@ logic [$clog2(512):0] start_address;
 	  .OUT     (ALU_out),//regWriteValue),
 	  .SC_IN   ,//(SC_IN),
 	  .SC_OUT  ,
-	  .IS_BRANCH(Instruction[8]),
+	  .IS_BRANCH(Instruction[8]||Instruction[7:4]==4'b0011),
 	  .branch(taken)  ,
 	  .ZERO 
 	  );

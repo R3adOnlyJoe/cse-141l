@@ -5,30 +5,38 @@
 // issues halt when PC reaches 63
 module PC(
   input start,
-  input [$clog2(512):0]start_address,		// relative
+  input [9:0]start_address,		// relative
   input branch,		// 
   input[7:0]	target,
   input  taken,
 		CLK,
 		LOOKUP2,
+		LOOKUP3,
   output logic[ 9:0] PC);
-
+  
+initial begin 
+	PC <= 0;
+end
 always @(posedge CLK)
-  if(start) begin
-    PC <= 0;
-  end
-  else begin
-    if(branch) begin
+    if(start)
+		PC<=PC+1;
+    else if(branch) 
 		  if(taken)
 		      if(LOOKUP2)
-					PC <=target[3:0];
+					PC <=5;
+				else if(LOOKUP3)
+					if(PC<670)
+					
+						PC <=261; 
+					else
+						PC<=681;
 				else
 					PC <= PC+target; 
 		  else
 				PC <= PC + 1;
-		end	
-	  else 
-			PC <= PC + 1; // just a randomly chosen number 
-  end
+		else 
+			PC<=PC+1;
+	
+  
   
 endmodule

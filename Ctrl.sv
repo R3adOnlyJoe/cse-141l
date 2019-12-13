@@ -12,7 +12,8 @@ module Ctrl (
 	output logic  	ACC_WRITE,        // carry reg clear
 	output logic  	IS_MEM,	       // carry reg enable
 	output logic   LOOKUP2,
-	output logic  	LOOKUP,	       // to carry register
+	output logic  	LOOKUP,	       
+	output logic   LOOKUP3,// to carry register
 	output logic	branch,
 	output logic   done
   );
@@ -26,6 +27,7 @@ always_comb begin
 		IS_MEM = 0;
 		LOOKUP = 0;
 		LOOKUP2 =0;
+		LOOKUP3 = 0;
 		branch = 1;
 		done = 0;
 
@@ -40,6 +42,7 @@ always_comb begin
 				IS_MEM = 0;
 				LOOKUP = 0;
 				LOOKUP2 =0;
+				LOOKUP3 = 0;
 				branch = 0;
 				done = 0;
 			end
@@ -51,6 +54,7 @@ always_comb begin
 				IS_MEM = 0;
 				LOOKUP = 0;
 				LOOKUP2 =0;
+				LOOKUP3 = 0;
 				branch = 0;
 				done = 0;
 			end
@@ -58,11 +62,12 @@ always_comb begin
 				MEM_READ = 0;
 				MEM_WRITE = 0;
 				REG_WRITE = 0;
-				ACC_WRITE = 1;
+				ACC_WRITE = 0;
 				IS_MEM = 0;
 				LOOKUP = 0;
 				LOOKUP2 =0;
-				branch = 0;
+				LOOKUP3 = 1;
+				branch = 1;
 				done = 0;
 			end
 			3: begin
@@ -73,6 +78,7 @@ always_comb begin
 				IS_MEM = 0;
 				LOOKUP = 0;
 				LOOKUP2 =1;
+				LOOKUP3 = 0;
 				branch = 1;
 				done = 0;
 			end
@@ -84,6 +90,7 @@ always_comb begin
 				IS_MEM = 0;
 				LOOKUP = 0;
 				LOOKUP2 =0;
+				LOOKUP3 = 0;
 				branch = 0;
 				done = 0;
 			end
@@ -95,6 +102,7 @@ always_comb begin
 				IS_MEM = 0;
 				LOOKUP = 0;
 				LOOKUP2 =0;
+				LOOKUP3 = 0;
 				branch = 0;
 				done = 0;
 			end
@@ -106,6 +114,7 @@ always_comb begin
 				IS_MEM = 0;
 				LOOKUP = 0;
 				LOOKUP2 =0;
+				LOOKUP3 = 0;
 				branch = 0;
 				done = 0;
 			end
@@ -117,6 +126,7 @@ always_comb begin
 				IS_MEM = 0;
 				LOOKUP = 0;
 				LOOKUP2 =0;
+				LOOKUP3 = 0;
 				branch = 0;
 				done = 0;
 			end
@@ -128,6 +138,7 @@ always_comb begin
 				IS_MEM = 0;
 				LOOKUP = 0;
 				LOOKUP2 =0;
+				LOOKUP3 = 0;
 				branch = 0;
 				done = 0;
 			end
@@ -139,6 +150,7 @@ always_comb begin
 				IS_MEM = 0;
 				LOOKUP = 0;
 				LOOKUP2 =0;
+				LOOKUP3 = 0;
 				branch = 0;
 				done = 0;
 			end
@@ -150,6 +162,7 @@ always_comb begin
 				IS_MEM = 0;
 				LOOKUP = 0;
 				LOOKUP2 =0;
+				LOOKUP3 = 0;
 				branch = 0;
 				done = 0;
 			end
@@ -161,6 +174,7 @@ always_comb begin
 				IS_MEM = 1;
 				LOOKUP = 0;
 				LOOKUP2 =0;
+				LOOKUP3 = 0;
 				branch = 0;
 				done = 0;
 
@@ -173,6 +187,7 @@ always_comb begin
 				IS_MEM = 0;
 				LOOKUP = 0;
 				LOOKUP2 =0;
+				LOOKUP3 = 0;
 				branch = 0;
 				done = 0;
 
@@ -185,6 +200,7 @@ always_comb begin
 				IS_MEM = 0;
 				LOOKUP = 0;
 				LOOKUP2 =0;
+				LOOKUP3 = 0;
 				branch = 0;
 				done = 1;
 			end
@@ -196,6 +212,7 @@ always_comb begin
 				IS_MEM = 0;
 				LOOKUP = 1;
 				LOOKUP2 =0;
+				LOOKUP3 = 0;
 				branch = 0;
 				done = 0;
 			end
@@ -207,6 +224,7 @@ always_comb begin
 				IS_MEM = 0;
 				LOOKUP = 0;
 				LOOKUP2 =0;
+				LOOKUP3 = 0;
 				branch = 0;
 				done = 0;
 			end
@@ -218,6 +236,7 @@ always_comb begin
 				IS_MEM = 0;
 				LOOKUP = 0;
 				LOOKUP2 =0;
+				LOOKUP3 = 0;
 				branch = 0;
 				done = 0;
 			end

@@ -52,10 +52,7 @@ module ALU(
 	         OUT    = INPUTA -INPUTB ;	       // check me on this!
 				SC_OUT = 0;
 	       end
-	 KDIV : begin
-				OUT 	 = INPUTA / INPUTB;
-				SC_OUT = 0;
-				end
+
 	 KLOA	: begin
 				OUT = INPUTA;
 				SC_OUT = 0;

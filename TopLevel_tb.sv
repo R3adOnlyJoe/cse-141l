@@ -37,12 +37,17 @@ initial begin
 OpA = ($random) >> 16;
 OpB = ($random) >> 16;
 $display(OpA,,,OpB);
-for(int i=0; i<15; i++) begin 
+DUT.data_mem1.core[1] = 8'b00000011;
+DUT.data_mem1.core[0] = 8'b01111000;
+DUT.data_mem1.core[64] = 8'b10010000;
+DUT.data_mem1.core[65] = 8'b01101101;
+
+/*for(int i=0; i<15; i++) begin 
 /*	DUT.data_mem1.core[2*i+1] = 8'b00000101;
-	DUT.data_mem1.core[i*2] = 8'b01010101;*/
+	DUT.data_mem1.core[i*2] = 8'b01010101;
 	DUT.data_mem1.core[2*i+1] = {5'b0, {$random} % 8};
 	DUT.data_mem1.core[i*2] = {$random} >> 8;
-end
+end*/
 /*DUT.data_mem1.core[2] = OpA[7:0];
 DUT.data_mem1.core[3] = OpB[15:8];
 DUT.data_mem1.core[4] = OpB[7:0];
@@ -57,12 +62,16 @@ DUT.data_mem1.core[4] = OpB[7:0];
   #10ns start = 0;
 // Wait for done flag, then display results
   wait (done);
-  #10ns for(int i=0; i<15; i++) begin
+  $displayh(DUT.data_mem1.core[64],
+                  DUT.data_mem1.core[65],"_",
+                  DUT.data_mem1.core[94],
+                  DUT.data_mem1.core[95]);
+ /* #10ns for(int i=0; i<15; i++) begin
 				$displayh(DUT.data_mem1.core[2*i],
                   DUT.data_mem1.core[2*i+1],"_",
                   DUT.data_mem1.core[30+2*i],
                   DUT.data_mem1.core[30+2*i+1]);
-			 end
+			 end*/
 			Product = OpA * OpB;
 			$displayh("bench_rslt = ", Product[31:16],,Product[15:0]);
         $display("instruction = %d %t",DUT.PC,$time);

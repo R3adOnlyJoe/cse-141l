@@ -27,6 +27,7 @@ wire        MEM_READ,	   // data_memory read enable
 			REG_WRITE,
 		    LOOKUP,	       // to carry register
 			 LOOKUP2,
+			 LOOKUP3,
 			ZERO,		   // ALU output = 0 flag
             taken,	   // to program counter: jump enable
 				SC_IN,
@@ -34,7 +35,7 @@ wire        MEM_READ,	   // data_memory read enable
             branch;	   // to program counter: branch enable
 				
 logic[15:0] cycle_ct;	   // standalone; NOT PC!
-logic [$clog2(512):0] start_address;
+logic [9:0] start_address;
 // Fetch = Program Counter + Instruction ROM
 // Program Counter
   PC PC1 (
@@ -44,6 +45,7 @@ logic [$clog2(512):0] start_address;
 	.target(Instruction[7:0]),
 	.taken,
 	.LOOKUP2,
+	.LOOKUP3,
 	.PC,
 	.CLK
 	);
@@ -66,6 +68,7 @@ logic [$clog2(512):0] start_address;
 	.IS_MEM,	       // carry reg enable
 	.LOOKUP,	       // to carry register
 	.LOOKUP2,
+	.LOOKUP3,
 	.branch,
 	.done
   );
@@ -103,7 +106,7 @@ logic [$clog2(512):0] start_address;
 	  .OUT     (ALU_out),//regWriteValue),
 	  .SC_IN   ,//(SC_IN),
 	  .SC_OUT  ,
-	  .IS_BRANCH(Instruction[8]||Instruction[7:4]==4'b0011),
+	  .IS_BRANCH(Instruction[8]||Instruction[7:4]==4'b0011||Instruction[7:4]==4'b0010),
 	  .branch(taken)  ,
 	  .ZERO 
 	  );

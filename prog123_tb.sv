@@ -69,8 +69,11 @@ initial begin
     $display();
   end
 
-// program 2
-// generate parity from random 11-bit messages 
+//// program 2
+//// generate parity from random 11-bit messages 
+ for(int i=0; i<15; i++) begin
+    DUT.reg_file1.registers[i] = 0;
+ end
   for(int i=0; i<15; i++) begin
 	d2_in[i] = $random;
     p8 = ^d2_in[i][11:5];
@@ -115,12 +118,12 @@ initial begin
 
 // program 3
 // pattern we are looking for; experiment w/ various values
-  pat = 5'b0000;//5'b10101;//$random;
+  pat = $random;//5'b10101;//$random;
   str2 = 0;
   DUT.data_mem1.core[160] = pat;
   for(int i=0; i<32; i++) begin
 // search field; experiment w/ various vales
-    mat_str[i] = 8'b00000000;//8'b01010101;// $random;
+    mat_str[i] = $random;//8'b01010101;// $random;
 	DUT.data_mem1.core[128+i] = mat_str[i];   
 	str2 = (str2<<8)+mat_str[i];
   end
